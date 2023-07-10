@@ -1,16 +1,14 @@
 package edu.nyit.haoyu.entity.dto;
 
 import java.io.Serializable;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * @author: Bowen huang
  * @date: 2021/06/02
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class MethodDTO implements Serializable {
 

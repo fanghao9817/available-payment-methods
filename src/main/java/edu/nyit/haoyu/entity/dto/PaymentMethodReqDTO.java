@@ -33,7 +33,4 @@ public class PaymentMethodReqDTO {
     private Long uid;
 
 
-    private Long goodsId;
-
-
 }

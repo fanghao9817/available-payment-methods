@@ -14,7 +14,7 @@ public interface PaymentService {
      * @param planId
      * @return
      */
-    List<PaymentMethodDTO> getUserPaymentMethodListV2(Long userId, Long planId, String currency, String country);
+    List<PaymentMethodDTO> getUserPaymentMethodListV2(Long userId, String currency, String country);
 
     PaymentMethodRespV2 getPaymentGatewayAccountsAndMethodDTOs(String country, String currency);
 

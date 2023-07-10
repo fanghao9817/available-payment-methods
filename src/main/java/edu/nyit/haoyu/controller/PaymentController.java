@@ -29,7 +29,7 @@ public class PaymentController {
     @PostMapping(value = "/methods/v2")
     public ApiResponse<List<PaymentMethodDTO>> paymentMethodV2(HttpServletRequest request,
             @RequestBody PaymentMethodReqDTO req) {
-        List<PaymentMethodDTO> paymentMethod = paymentService.getUserPaymentMethodListV2(req.getUid(), req.getGoodsId(),
+        List<PaymentMethodDTO> paymentMethod = paymentService.getUserPaymentMethodListV2(req.getUid(),
                 req.getCurrency(), req.getCountry());
 
         return ResponseUtils.ok(paymentMethod);

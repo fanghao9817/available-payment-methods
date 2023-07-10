@@ -3,25 +3,22 @@ package edu.nyit.haoyu.entity.vo;
 import edu.nyit.haoyu.entity.dto.MethodDTO;
 import java.io.Serializable;
 import java.util.List;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * @author: Bowen huang
  * @date: 2021/06/02
  */
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class PaymentMethodRespV2 implements Serializable {
 
     private List<MethodDTO> methods;
     private List<Account> providerAccounts;
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
+    @Data
+    @AllArgsConstructor
     public static class Account {
 
         private String provider;

@@ -13,6 +13,7 @@ import edu.nyit.haoyu.entity.po.BillPaymentRule;
 import edu.nyit.haoyu.entity.po.BillUserAccountBind;
 import edu.nyit.haoyu.entity.vo.ApiResponse;
 import edu.nyit.haoyu.entity.vo.PaymentMethodRespV2;
+import edu.nyit.haoyu.service.MockService;
 import edu.nyit.haoyu.service.PaymentService;
 import edu.nyit.haoyu.utils.Validator;
 import java.util.ArrayList;
@@ -46,6 +47,9 @@ public class PaymentServiceImpl implements PaymentService {
     @Resource
     private BillPaymentRuleDao billPaymentRuleDao;
 
+    @Autowired
+    MockService mockService;
+
     /**
      * This method is the entry point for retrieving user-specific payment methods. It queries the payment gateway for
      * available accounts and payment methods, checks the user's existing binding status, performs cleaning, and
@@ -53,22 +57,23 @@ public class PaymentServiceImpl implements PaymentService {
      * end.
      *
      * @param userId   The ID of the user for whom to retrieve payment methods
-     * @param planId   The plan ID associated with the user
      * @param currency The currency associated with the user's payment method
      * @param country  The country associated with the user's payment method
      * @return A list of payment method DTOs
      */
     @Override
-    public List<PaymentMethodDTO> getUserPaymentMethodListV2(Long userId, Long planId, String currency,
+    public List<PaymentMethodDTO> getUserPaymentMethodListV2(Long userId, String currency,
             String country) {
         // Log the input parameters
         log.info(
                 "[PaymentServiceImpl/getUserPaymentMethodList]find payment methods V2 req = userId={}, planId={}, currency={}, country={}",
-                userId, planId, currency, country);
+                userId, currency, country);
 
         // Retrieve all supported third-party payment channel merchant accounts (PaymentMethodRespV2.accounts)
         // and most granular payment methods (PaymentMethodRespV2.methodDTOs) from the payment gateway based on the input currency and country.
-        PaymentMethodRespV2 paymentMethodRespV2 = getPaymentGatewayAccountsAndMethodDTOs(country, currency);
+        //GetPaymentGatewayAccountsAndMethodDTOs method originally interface call here, here we can mock a set of data
+//        PaymentMethodRespV2 paymentMethodRespV2 = getPaymentGatewayAccountsAndMethodDTOs(country, currency);
+        PaymentMethodRespV2 paymentMethodRespV2 = mockService.getPaymentGatewayAccountsAndMethodDTOs(country, currency);
         log.info("[PaymentServiceImpl/getUserPaymentMethodList]PAYMENT GATEWAY payment methods V2 resp={}",
                 paymentMethodRespV2);
 

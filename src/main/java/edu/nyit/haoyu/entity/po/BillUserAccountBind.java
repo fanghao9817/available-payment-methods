@@ -14,9 +14,6 @@ import lombok.Data;
 @TableName("bill_user_account_bind")
 public class BillUserAccountBind {
 
-    private static final long serialVersionUID = -75766938343285757L;
-
-
     private String userId;
 
     private String currency;
